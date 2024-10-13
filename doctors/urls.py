@@ -3,12 +3,12 @@ from django.urls import path
 from doctors.views import ListDoctorsViewSet, DetailDoctorView 
 
 from rest_framework.routers import DefaultRouter
-from .viewsets import DoctorViewSet
+from .viewsets import DoctorViewSet, DepartmentViewSet, DoctorAvailabilityViewSet, MedicalNoteViewSet
 
 router = DefaultRouter()
 router.register('doctors', DoctorViewSet, basename='doctor')
+router.register('departments', DepartmentViewSet, basename='department')
+router.register('doctor-availabilities', DoctorAvailabilityViewSet, basename='doctor-availability')
+router.register('medical-notes', MedicalNoteViewSet, basename='medical-note')
 
-urlpatterns = [
-    path('doctors', ListDoctorsViewSet.as_view({'get': 'list', 'post': 'create'})),
-    path('doctors/<int:pk>/', DetailDoctorView.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
-] + router.urls
+urlpatterns = router.urls
