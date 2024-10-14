@@ -1,3 +1,4 @@
 **/*/__pycache__/*
 */__pycache__/
 patients/__pycache__/**/*.py
+db.sqlite3
